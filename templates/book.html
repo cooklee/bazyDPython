@@ -2,17 +2,29 @@
 
 {%block zawartosc%}
     <form method="post">
-        <p>Tytuł: <input type="text" name="title"></p>
-        <select name="id_author">
-            {%for author in autorzy%}
-                <option value="{{author.0}}">{{author.1}} {{author.2}}</option>
-            {%endfor%}
-        </select>
+        {% if b %}
+            <p>Tytuł: <input type="text" name="title"  value="{{b.1}}"></p>
+            <select name="id_author">
+                {%for author in autorzy%}
+                    <option value="{{author.0}}" {%if b.2 == author.0%} selected {%endif%}>
+                        {{author.1}} {{author.2}}
+                    </option>
+                {%endfor%}
+            </select>
+        {%else%}
+            <p>Tytuł: <input type="text" name="title"  ></p>
+            <select name="id_author">
+                {%for author in autorzy%}
+                    <option value="{{author.0}}">{{author.1}} {{author.2}}</option>
+                {%endfor%}
+            </select>
+        {%endif%}
+
         <p><input type="submit" value="dodaj"> </p>
     </form>
 <ul>
     {% for book in books %}
-        <li>{{book.1}}</li>
+        <li><a href="/book/{{book.0}}"> {{book.1}}</a></li>
     {%endfor%}
 
 

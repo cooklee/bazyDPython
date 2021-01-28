@@ -1,7 +1,7 @@
 
 from flask import Flask, request, render_template
 
-from get_data import get_authors, get_books
+from get_data import get_authors, get_books, get_book_by_id
 from insert_data_to_db import dodaj_autora, dodaj_ksiazke
 
 app = Flask(__name__)
@@ -24,6 +24,15 @@ def books():
     autorzy = get_authors()
     books = get_books()
     return render_template("book.html", autorzy=autorzy, books=books)
+
+@app.route('/book/<int:id>', methods=['GET', 'POST'])
+def book(id):
+    book = get_book_by_id(id)
+    # if request.method == 'POST':
+    #     dodaj_ksiazke(**request.form)
+    autorzy = get_authors()
+    books = get_books()
+    return render_template("book.html", autorzy=autorzy, books=books, b=book)
 
 
 

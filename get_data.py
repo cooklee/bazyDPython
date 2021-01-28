@@ -19,6 +19,15 @@ def get_books():
     conn.close()
     return data
 
+def get_book_by_id(id):
+    conn = connect()
+    cursor = conn.cursor()
+    sql = f"SELECT * FROM book where id={id};"
+    cursor.execute(sql)
+    data = cursor.fetchone()
+    conn.close()
+    return data
+
 
 if __name__ == '__main__':
     a = get_authors()
