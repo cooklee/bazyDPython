@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+{%block zawartosc%}
+    <form method="post">
+        <p>Tytuł: <input type="text" name="title"></p>
+        <select name="id_author">
+            {%for author in autorzy%}
+                <option value="{{author.0}}">{{author.1}} {{author.2}}</option>
+            {%endfor%}
+        </select>
+        <p><input type="submit" value="dodaj"> </p>
+    </form>
+<ul>
+    {% for book in books %}
+        <li>{{book.1}}</li>
+    {%endfor%}
+
+
+
+</ul>
+{%endblock%}

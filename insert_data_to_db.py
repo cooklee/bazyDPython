@@ -9,3 +9,13 @@ def dodaj_autora(first_name, last_name):
     cursor = conn.cursor()
     cursor.execute(sql)
     conn.close()
+
+def dodaj_ksiazke(title, id_author):
+    sql = f"""
+        INSERT INTO book (title, id_author) values 
+                           ('{title}', {id_author});
+        """
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    conn.close()
