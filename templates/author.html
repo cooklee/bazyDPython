@@ -1,4 +1,17 @@
 {%extends 'base.html'%}
+
 {%block zawartosc%}
-tutaj bedzie formularz do dodawania autorów
+    <form method="post">
+        <p>imie: <input type="text" name="first_name"></p>
+        <p>Nazwisko: <input type="text" name="last_name"></p>
+        <p><input type="submit" value="dodaj"> </p>
+    </form>
+<ul>
+    {% for author in autorzy %}
+        <li>{{author.1}} {{author.2}}</li>
+    {%endfor%}
+
+
+
+</ul>
 {%endblock%}
